@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 2 Notes</title>
+        <style>
+            body {
+                background-color: rgb(60, 167, 167);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Notes</h1>
+        
+        <h2>Ch.2 Programming Basics</h2>
+        <ul>
+            <li>Javascript primitive data types: strings, symbols, numbers, Booleans,
+                undefined, and null.
+            </li>
+            <li>Javascript non-primative data types all have a type of 'object'.</li>
+            <li>Use <code>const</code> anytime a variable will not need to change within scope</li>
+            <li>Use <code>let</code> anytime a variable will need to change within scope</li>
+            <li><code>Symbol()</code> "The symbol is a new primitive type, a unique token that’s 
+                guaranteed never to clash with another symbol. In this sense, you could 
+                think of symbols as a kind of UUID (universally unique identifier)."
+                <a href="https://www.sitepoint.com/es6-symbols-uses/" target="_blank">
+                    https://www.sitepoint.com/es6-symbols-uses/</a>
+            </li>
+            <li><code>Infinity</code> An error value representing any number too
+                big for Javascript to handle. (> +/- 1e308 or 1/0)
+            </li>
+            <li>The only 9 values that are always false (falsy values): empty strings ("", '', ``),
+                0, -0 (different than 0 in Javascript), NaN, false, null, undefined.
+            </li>
+            <li>Always use hard equals and not equals (=== and !==)</li>
+            <li>Because NaN === NaN is false (only value not equeal to itself), always use Number.isNaN(NaN);
+                (not isNaN()) when checking for NaN.
+            </li>
+        </ul>
+        <h2>Ch.3 Arrays, Logic, and Loops</h2>
+        <ul>
+            <li>What are some good uses for destructuring an array?</li>
+            <li>When trying the snippets of code in the book, I found an error.
+                Following the snippets I declared the avengers array as <code>const</code>.
+                Further in the reading, following the snippets, when trying to merge the avengers
+                array with another array in the terminal it thows this error, "Thrown:
+                TypeError: Assignment to constant variable."  When declaring avengers with <code>let</code>
+                merging does work.
+            </li>
+            <li>How exactly does the <code>spread</code> operator work? (use it by placing 3 dots, <code>...</code>
+                in front of an array to spread out the values in the array (can be used to merge 2 arrays).
+            </li>
+            <li>A good way to eliminate duplicate values in an array is to create a set out of the array.<br/>
+                Example from the book:<br/>
+                <code>const moreNumbers = new Set([7,7,7,7,7,8,8,8,9,9]);</code><br/>
+                    moreNumbers equals <code>Set {7,8,9}</code>
+            </li>
+            <li>A set can be converted to an array using the spread operator with the set inside an array literal.<br/>
+                <li>Examples from the book:<br/>
+                <code>const shoppingSet = new Set().add('Apples').add('Bananas').add('Beans');</code><br/>
+                <code>const shoppingArray = [...shoppingSet]</code></li>
+                Or use the <code>Array.from()</code> method:<br/>
+                <code>const shoppingArray = Array.from(shoppingSet);</code><br/>
+                Create a copy of an array with duplicate values removed:<br/>
+                <code>const duplicate = [3, 1, 4, 1, 5, 9, 2, 6 ,5,3,5,9];</code><br/>
+                <code>const nonDuplicate = [...new Set(duplicate)];</code> (I found an error in the book.
+                It says, "new Set(repeatedArray)" instead of new Set(duplicate))
+            </li>
+            <li><code>Set() vs WeakSet()</code>
+                <ul>
+                    <li>Ojects in sets remain in the set, even if the original reference to the object is removed.</li>
+                    <li>Weak sets garbage collect any references to a 'dead object', which is an object that's had 
+                    it's original reference removed.</li>
+                    <li>Weak sets will only hold non-primitive data types.</li>
+                    <li>Weak sets have weak references; they don't have access to a list of values they contain.</li>
+                    <li>Aside from the previous differences, weak sets behave the same as sets.</li>
+                </ul>
+            </li>
+            <li><code>WeakMap()</code> have similar differences to <code>Map()</code> as Weak sets do to sets.  One method they both do not have
+                due to the differences is the <code>size()</code> method.
+            </li>
+            <li>Always finish a case block with a <code>break</code>.</li>
+            <li>Remember (important point about for loops):
+                <p>"We want the loop to continue until it reaches the length of the array; this can be set as the variable max in the initialization 
+                    part of the for loop, then the condition becomes i < max . This is preferable to using i < avengers.length because then the 
+                    length of the avengers array would have to be calculated after every pass through the loop. This might not sound all that 
+                    important, but it can make a big difference to the speed of the program when using large arrays."<br/>
+                    Book Example:<br/>
+                    for(let i=0, max=avengers.length; i < max; i++){
+                        console.log(avengers[i]);
+                        }
+                </p> 
+            </li>
+        </ul>
+        <h2>Ch.4 Functions</h2>
+        <ul>
+            <li>Always declare functions using funciton literals - function declarations, or function expressions.</li>
+            <li>Do not use function constructors.</li>
+            <li>Arrow functions should really only be used with one liner functions.</li>
+            <li>Keep your code DRY (Don't Repeat Yourself).</li>
+            <li>Rounding Error Warning from the book:
+                <p>You might have noticed that the answer to the last example was slightly incorrect (it should be just 3.3 recurring, with no 5 on the 
+                    end). This highlights a problem when doing division in JavaScript (or calculations on any computer, for that matter). The problem stems 
+                    from the fact that computers use base 2 in the background and therefore struggle to represent any fractions where the denominator is 
+                    not a power of 2. This means that some division calculations can often have slight rounding errors. This usually doesn’t cause a problem, 
+                    but you should be aware of it.</p>
+            </li>
+            <li>Practice callback funtions to gain a better understanding.</li>
+            <li>How can I understand chaining iterators / chainging methods better?</li>
+        </ul>
+    </body>
+</html>
