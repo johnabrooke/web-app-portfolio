@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 3 Notes</title>
+        <style>
+            body {
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Notes</h1>
+
+        <h2><a href="https://javascript.info/object-methods"
+            targt="_blank">
+            Object Methods: this (https://javascript.info/object-methods)</a></h2>
+        <ul>
+            <li>The value of <code>this</code> is defined at run-time.</li>
+            <li>In JavaScript this is “free”, its value is evaluated at call-time and does not 
+                depend on where the method was declared, but rather on what object is “before 
+                the dot”.</li>
+            <li>Arrow functions don't have a <code>this</code>, when <code>this is referenced
+                it's referring to the outer non-arrow function.</code></li>
+            <li>When a function is declared, it may use <code>this</code>, but that <code>this</code> 
+                has no value until the function is called.
+            </li>
+            <li>When a function is called in the “method” syntax: object.method(), the value of this 
+                during the call is object.
+            </li>
+        </ul>
+        <h2>Ch.5 Objects</h2>
+        <ul>
+            <li>Computed Properties</li>
+            <ul>
+                <li>JavaScript code can be placed inside square brackets and the property key will be the 
+                    return value of that code.</li>
+                <ul>
+                    <li><code>const hulk = { name: 'Hulk', ['catch' + 'Phrase']: 'Hulk Smash!' };</code></li>
+                    <li><code><< { name: 'Hulk', catchPhrase: 'Hulk Smash!' }</code></li>
+                </ul>
+                <li>The value of a property has always been allowed to be a JavaScript expression. In the 
+                    example below a ternary operator is used to return a true or false value for the hero 
+                    property depending on the value of the bewitched variable:<br/>
+                    <code>
+                        const bewitched = true;<br/>
+                        const captainBritain = { name: 'Captain Britain', hero: bewitched ? false : true };<br/>
+                        captainBritain<br/>
+                        << { name: 'Captain Britain', hero: false }
+                    </code>
+                </li>
+            </ul>
+        </ul>
+    </body>
+</html>
