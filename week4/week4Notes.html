@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Week 4 Notes</title>
+        <style>
+            body {
+                background-color: grey;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Notes</h1>
+
+        <h2>Ch.8 Forms</h2>
+        <h3>Accessing Form Elements</h3>
+        <ul>
+            <li><code>document.forms</code>: legacy DOM property that returns an HTML collection of all the forms in the document in the order they appear in the markup, a collection will be returned even if there is only one form; it will be a collection of one. (ex. <code>documetn.forms[0];</code> returns the first form object)</li>
+            <li>Instead of using a numerical index, we can use the name attribute to identify a form:
+
+                <code>const form = document.forms.search;</code>
+
+                Be careful referencing elements in this way, however. If the form had the same name as any properties or methods of the document.forms object, such as 'submit', for example, that property or method would be referenced instead of the <code>&lt;form&gt;</code> element. This is unlikely to happen, as the document.form object doesn't have many properties or methods, but it is something to be aware of. To avoid this, square bracket notation can be used (this is also required if the form’s name attribute contains any invalid characters, such as spaces or dashes):
+                
+                <code>const form = document.forms['search'];</code></li>
+        </ul>
