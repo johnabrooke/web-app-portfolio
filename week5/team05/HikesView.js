@@ -5,7 +5,7 @@ class HikesView {
     renderHikeList(hikeListElement, hikeList) {
         hikeListElement.innerHTML = '';
         hikeList.forEach(hike => {
-            hikeListElement.appendChild(this.renderOneHikeFull(hike));
+            hikeListElement.appendChild(this.renderOneHikeLight(hike));
         });
     }
     renderOneHikeLight(hike) {
@@ -32,9 +32,9 @@ class HikesView {
         const backButton = document.createElement('button');
         backButton.innerHTML = '&lt; - All Hikes';
         // this method will be used to one hike with full detail...you will need this for the stretch goal!
-        const item = document.createElement("li");
+        const item = document.createElement('li');
         item.innerHTML = `
-                <img src="${imgBasePath}"${hike.imgSrc}" alt="${hike.imgAlt}">
+                <img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}">
                 <h2>${hike.name}</h2>
                 <div>
                     <h3>Distance</h3>
