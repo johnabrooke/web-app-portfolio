@@ -51,11 +51,50 @@
                     </code>
                 </li>
             </ul>
+            <li>Inspect element here to see example of date object.<script>
+                const date = new Date();
+                console.log(date.toString());
+                console.log(date.getTimezoneOffset());
+            </script></li>
         </ul>
-        <script>
-            const date = new Date();
-            console.log(date.toString());
-            console.log(date.getTimezoneOffset());
-        </script>
+        <h2>Ch.6 The Document Object Model</h2>
+        <h3>Steps to create a new element with text inside</h3>
+        <ol>
+            <li>Create the element node</li>
+            <li>Create the text node</li>
+            <li>Append the text node to the element node</li>
+        </ol>
+        <p>This can be made simpler by using the textContent property that every element object has. This will add a text node to an element without the need to append it, so the code above could have been written as the following:<br/>
+            <code>const flash = document.createElement('li');<br/>
+            flash.textContent = 'Flash';</code></p>
+        <h3>A Function To Create Elements</h3>
+        <pre>function createElement (tag,text) {
+            const el = document.createElement(tag);
+            el.textContent = text;
+            return el
+        }
+        
+        Example using the function above to create a list item:
+        const aquaman = createElement('li','Aquaman');</pre>
+        <li style="color:red;">In my example, while following the book, this line of code <code>superman.style['background color'] = 'blue';</code> didn't change the background color at all.</li>
+        <h3>Chapter Summary</h3>
+        <pre>
+            The Document Object Model is a way of representing a page of HTML as a tree of nodes.
+
+            The document.getElementById() , document.getElementsByClassName() , document.getElementsByTagNames() and document.querySelector() can be used to access elements on a page.
+            
+            The parentNode() , previousSibling() , nextSibling() , childNodes() and children() methods can be used to navigate around the DOM tree.
+            
+            An element’s attributes can be accessed using the getAttribute() method, and updated using the setAttribute() method.
+            
+            The createElement() and createTextNode() methods can be used to create dynamic markup on the fly.
+            
+            Markup can be added to the page using the appendChild() and insertBefore() methods.
+            
+            Elements can be replaced using the replaceChild() method, and removed using the removeChild() method.
+            
+            The innerHTML property can be used to insert raw HTML directly into the DOM.
+            
+            The CSS properties of an element can be changed by accessing the style property.</pre>
     </body>
 </html>
