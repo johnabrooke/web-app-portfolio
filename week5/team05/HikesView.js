@@ -27,7 +27,7 @@ class HikesView {
 
         return item;
     }
-    renderOneHikeFull(parentElement, hike) {
+    renderOneHikeFull(parent, hike) {
         const backButton = document.createElement('button');
         backButton.innerHTML = '&lt; - All Hikes';
         // this method will be used to one hike with full detail...you will need this for the stretch goal!
