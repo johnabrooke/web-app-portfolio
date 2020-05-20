@@ -4,7 +4,7 @@ class HikesView {
     renderHikeList(hikeListElement, hikeList) {
         hikeListElement.innerHTML = '';
         hikeList.forEach(hike => {
-            hikeListElement.appendChild(this.renderOneHikeLight(hike));
+            hikeListElement.appendChild(this.renderOneHikeFull(parentElement, hike));
         });
     }
     renderOneHikeLight(hike) {
