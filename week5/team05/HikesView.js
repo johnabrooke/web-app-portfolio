@@ -5,7 +5,7 @@ class HikesView {
     renderHikeList(hikeListElement, hikeList) {
         hikeListElement.innerHTML = '';
         hikeList.forEach(hike => {
-            hikeListElement.appendChild(this.renderOneHikeLight(hike));
+            hikeListElement.appendChild(this.renderOneHikeFull(hike));
         });
     }
     renderOneHikeLight(hike) {
@@ -53,8 +53,8 @@ class HikesView {
                     <p>${hike.directions}</p>
                 </div>
                 
-          <br>
-          <a href="index.html"><-</a>
+                <br>
+                <a href="index.html">Back</a>
             `;
 
         parent.innerHTML = '';
