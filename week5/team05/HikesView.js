@@ -3,8 +3,8 @@ const imgBasePath = '//byui-cit.github.io/cit261/examples/';
 class HikesView {
     renderHikeList(hikeListElement, hikeList) {
         hikeListElement.innerHTML = '';
-        hikeList.forEach(parentElement, hike => {
-            hikeListElement.appendChild(this.renderOneHikeFull(parentElement, hike));
+        hikeList.forEach(hike => {
+            hikeListElement.appendChild(this.renderOneHikeFull(hikeListElement, hike));
         });
     }
     renderOneHikeLight(hike) {
