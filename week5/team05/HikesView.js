@@ -1,5 +1,4 @@
 const imgBasePath = '//byui-cit.github.io/cit261/examples/';
-
 // Hike View handler
 class HikesView {
     renderHikeList(hikeListElement, hikeList) {
