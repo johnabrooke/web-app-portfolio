@@ -1,5 +1,6 @@
 import HikeModel from './HikeModel.js';
 import HikesView from './HikesView.js';
+import Comments from './comments.js';
 
 // Hike controller
 export default class HikesController {
@@ -8,6 +9,7 @@ export default class HikesController {
     // this is how our controller will know about the model and view...we add them right into the class as members.
     this.hikeModel = new HikeModel();
     this.hikesView = new HikesView(parentId);
+    //this.comments
   }
   
   showHikeList() {
@@ -16,17 +18,16 @@ export default class HikesController {
 
     this.hikesView.renderHikeList(this.parentElement, hikeList);
 
+
+
     this.addHikeListener();
     //  this will get called each time we need to display our full hike list. It should grab the list of hikes from the Model, and then send them to the view.
   }
 
   showOneHike(hikeName) {
     const hike = this.hikeModel.getHikeByName(hikeName);
-    this.hikesView.renderOneHikeFull(
-      this.parentElement, hike
-    ).ontouchend = () =>{
-      this.showHikeList();
-    };
+    this.hikesView.renderOneHikeFull(this.parentElement, hike).ontouchend = this.showHikeList();
+    
     // use this when you need to show just one hike...with full details
     
   }

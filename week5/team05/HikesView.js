@@ -5,6 +5,7 @@ class HikesView {
         hikeListElement.innerHTML = '';
         hikeList.forEach(hike => {
             hikeListElement.appendChild(this.renderOneHikeLight(hike));
+                //hikeListElement.appendChild(this.renderOneHikeFull);
         });
     }
     renderOneHikeLight(hike) {
@@ -54,8 +55,9 @@ class HikesView {
                 
                 <br>
                 <a href="index.html">Back</a>
+                
             `;
-
+        document.querySelector('.input').style.display = block;
         parent.innerHTML = '';
         item.insertBefore(backButton, item.childNodes[0]);
         parent.appendChild(item);

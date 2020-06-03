@@ -57,12 +57,20 @@
         .light h3 {
           margin-bottom: -0.5em;
         }
+        .input {
+          display: none;
+        }
       </style>
 </head>
 <body>
     <h1>Great hikes</h1>
     <ul class="hikeStyles" id="hikes">
     </ul>
+    <input type="text" class="input" name="hikeName" id="hikeName" placeholder="Hike Name">
+    <input type="text" class="input" name="commentContent" id="commentContent" placeholder="Comment Content">
+    <button class="input" id="addCommentBtn">Add Comment</button>
+
+    <div id="theList"></div>
     <script src="main.js" type="module"></script>
 </body>
 </html>
