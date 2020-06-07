@@ -1,6 +1,7 @@
 import utils from './utils.js';
 import ls from './ls.js';
 
+loadToDos();
 document.querySelector('#addBtn').onclick = newToDo;
 
 function loadToDos() {
@@ -10,6 +11,7 @@ function loadToDos() {
         const el = createToDoElement(todo)
         addToList(el);
     })
+    
 }
 
 function newToDo() {
@@ -34,17 +36,21 @@ function createToDoElement(todo) {
 
     // complete button
     const completeBtn = document.createElement('button');
-   // completeBtn.setAttribute('data-id', todo.id);
+    completeBtn.setAttribute('data-id', todo.id);
     completeBtn.classList.add('complete-btn');
     completeBtn.onclick = completeToDo;
-    /*if(todo.completed === true) {
-        todoContent.style.setProperty("text-decoration", "line-through");
-    }*/    
+    if(todo.completed) {
+        completeBtn.innerText = "X";
+    }
+    
     
     // todo content
     const todoContent = document.createElement('div');
     todoContent.innerText = todo.content;
     todoContent.classList.add('todo-content');
+    if(todo.completed) {
+        todoContent.classList.add('strikethrough');
+    }
 
     // delete button
     const deleteBtn = document.createElement('button');
@@ -75,6 +81,7 @@ function deleteToDo(e) {
 
 function completeToDo(e) {
     const btn = e.currentTarget;
-   // ls.markToDoComplete(btn.getAttribute('data-id'));
-    btn.innerText = "X";
+    ls.toggleCompleted(btn.getAttribute('data-id'));
+    document.querySelector('#todos').innerHTML = '';
+    loadToDos();
 }

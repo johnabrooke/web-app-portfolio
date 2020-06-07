@@ -30,6 +30,8 @@
                 during the call is object.
             </li>
         </ul>
+        
+        
         <h2>Ch.5 Objects</h2>
         <ul>
             <li>Computed Properties</li>
@@ -57,7 +59,10 @@
                 console.log(date.getTimezoneOffset());
             </script></li>
         </ul>
+        
+        
         <h2>Ch.6 The Document Object Model</h2>
+        
         <h3>Steps to create a new element with text inside</h3>
         <ol>
             <li>Create the element node</li>
@@ -67,6 +72,7 @@
         <p>This can be made simpler by using the textContent property that every element object has. This will add a text node to an element without the need to append it, so the code above could have been written as the following:<br/>
             <code>const flash = document.createElement('li');<br/>
             flash.textContent = 'Flash';</code></p>
+        
         <h3>A Function To Create Elements</h3>
         <pre>function createElement (tag,text) {
             const el = document.createElement(tag);
@@ -77,6 +83,7 @@
         Example using the function above to create a list item:
         const aquaman = createElement('li','Aquaman');</pre>
         <li style="color:red;">In my example, while following the book, this line of code <code>superman.style['background color'] = 'blue';</code> didn't change the background color at all.</li>
+        
         <h3>Chapter Summary</h3>
         <pre>
             The Document Object Model is a way of representing a page of HTML as a tree of nodes.
@@ -95,6 +102,12 @@
             
             The innerHTML property can be used to insert raw HTML directly into the DOM.
             
-            The CSS properties of an element can be changed by accessing the style property.</pre>
+            The CSS properties of an element can be changed by accessing the style property.
+        </pre>
+
+        <h2>Ch. 7 Events</h2>
+
+        <h3><a href="week3/examples/ch7Example/events.html">Events.html Example</a></h3>
+
     </body>
 </html>

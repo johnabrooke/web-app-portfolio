@@ -45,8 +45,56 @@
                 width: calc(100% - 1rem);
             }
 
-            .todo.filters {
-                padding-top: 15px;
+            .todo-filters {
+                display: flex;
+                flex-direction: row;
+                box-sizing: border;
+                padding-top: 5px;
+            }
+
+            #tasksLeft {
+                padding-right: 5.3rem;
+                background-color: darkslateblue;
+                background-repeat: no-repeat;
+            }
+
+            .toggle-todos-btns {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+
+            .toggle-btn2 {
+                display: flex;
+                flex-direction: row;
+                box-sizing: border;
+                background-color: darkturquoise;
+                background-repeat: no-repeat;
+            }
+
+            .toggle-btn {
+                list-style: none;
+            }
+
+            .toggle-btn li {
+                display: ;
+            }
+
+            .toggle-btn input {
+                visibility: hidden;
+            }
+
+            label{
+               cursor: pointer;
+               
+               padding: 5px;
+            }
+
+            .toggle-btn input:checked + label {
+                background: darkseagreen;
+            }
+
+            .selected {
+                background-color: darkseagreen;
             }
 
             .delete-btn {
@@ -65,7 +113,7 @@
         </style>
         <script type="module" src="js/Todo.js"></script>
     </head>
-    <body onload="loadTodos()">
+    <body>
         <div class="container">
             <h1>Todos</h1>
 
@@ -75,7 +123,24 @@
                 </div>
 
                 <div class="todo-filters">
-
+                    <div id="tasksLeft">
+                        3 tasks left
+                    </div>
+                    <ul class="toggle-btn">
+                    <!--<div class="toggle-btn">-->
+                        <li id="all" class="toggle-todos-btns">
+                            <input id="all" name="todos-toggle" type="radio" checked="checked">
+                            <label for="all">All</label>
+                        </li>
+                        <li id="active" class="toggle-todos-btns">
+                            <input id="active" name="todos-toggle" type="radio" checked="">
+                            <label for="active">Active</label>
+                        </li>
+                        <li id=completed class="toggle-todos-btns">
+                            <input id="completed" name="todos-toggle" type="radio" checked="">
+                            <label for="completed">Completed</label>
+                        </li>
+                    </ul>
                 </div>
             </div>
 

@@ -5,16 +5,17 @@ function saveToDo(todo) {
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
 }
 
-/*function markToDoComplete(id) {
+function toggleCompleted(id) {
     const toDoList = getToDoList();
     
     const updatedToDos = toDoList.map( todo => {
-        if(id == toDoList.id) {
-            toDoList.completed = true;
+        if(id == todo.id) {
+            todo.completed = !todo.completed;
         }
+        return todo;
     })
     localStorage.setItem('toDoList', JSON.stringify(updatedToDos));
-}*/
+}
     
 
 function deleteToDo(id) {
@@ -39,5 +40,5 @@ export default {
     saveToDo,
     deleteToDo,
     getToDoList,
-    //markToDoComplete
+    toggleCompleted
 }
