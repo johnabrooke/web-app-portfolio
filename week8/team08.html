@@ -2,7 +2,23 @@
 <html lang='en'>
 <head>
     <meta charset='utf-8'>
+    <link href="https://allfont.net/allfont.css?fonts=star-jedi" rel="stylesheet" type="text/css" />
     <title>Star Wars Ships</title>
+    <style>
+        body {
+            font-family: 'Star Jedi', Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            background-color: black;
+            color: yellow;
+            text-align: center;
+            
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body>
     <h1>Star Wars Ships</h1>
@@ -34,16 +50,28 @@
     function renderShips(data) {
         const shipsContainer = document.querySelector('#shipsList');
         
+        
         if(data.next){
-            btn.textContent = "Show More";  
+            btn.textContent = "Next page";  
             btn.setAttribute('onclick', `getShips('${data.next}')`)
+        } else {
+            btn.classList.add("hidden");
         }
+
+        if(data.previous) {
+            const previousBtn = document.createElement('button');
+            previousBtn.textContent = "Previous page";
+            previousBtn.setAttribute('ontouchend', `getShips('${data.previous}')`)
+        } else {
+            previousBtn.classList.add("hidden");
+        }
+
 
         data.results.forEach(starship => {
             const listItem = document.createElement('li'); 
             listItem.innerHTML = 
             `
-            <span class="ship-name">Star Ship Name:${starship.name}</span>
+            <span class="ship-name">Star Ship Name: ${starship.name}</span>
             <button class="view-btn" onclick="getDetails('${starship.name}', '${starship.url}')">View</button>
             `
             listItem.id = starship.name;
@@ -57,19 +85,19 @@
         fetch (url)
             .then( res => res.json() )
             .then( json => {
-                console.log('Details ', json)
+                console.log('DETAILS ', json)
                 var li = document.getElementById(id);
                 var div = document.createElement('div');
                 div.innerHTML = 
                 `
                 <span class="ship-details">
-                <br>Star Ship Manufacturer: ${json.starship.manufacturer}<br>
-                Star Ship Model: ${starship.model}<br>
-                Hyperdrive Ratin: ${starship.hyperdrive_rating}<br>
-                Cargo Capacity: ${starship.cargo_capacity}<br>
-                Credits Cost: ${starship.cost_in_credits}<br>
-                Crew: ${starship.crew}<br>
-                Max Atmosphere Speed: ${starship.max_atmosphering_speed}
+                Star Ship Manufacturer: ${json.manufacturer}<br>
+                Star Ship Model: ${json.model}<br>
+                Hyperdrive Ratin: ${json.hyperdrive_rating}<br>
+                Cargo Capacity: ${json.cargo_capacity}<br>
+                Credits Cost: ${json.cost_in_credits}<br>
+                Crew: ${json.crew}<br>
+                Max Atmosphere Speed: ${json.max_atmosphering_speed}
                 `
                 li.lastElementChild.remove();
                 li.appendChild(div);
