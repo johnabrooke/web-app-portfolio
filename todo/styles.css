@@ -1,0 +1,79 @@
+body {
+    background-color: cadetblue;
+}
+h1 {
+    text-align: center;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.container {
+    max-width: 400px;
+    font-family: "Brandon Grotesque", Gotham, sans-serif;
+    font-size: 16 px;
+    margin: auto;
+}
+
+.todo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border;
+}
+
+.todo button {
+    width: 25px;
+    height: 25px;
+    border-radius: 3px;
+    border: 1px solid darkgray;
+}
+
+.todo-content {
+    padding: 10px 20px;
+    width: calc(100% - 1rem);
+}
+
+.todo-filters {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border;
+    padding-top: 5px;
+}
+
+#tasksLeft {
+    margin-right: 100px;
+}
+
+.toggle-todos-btns {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.filter-btns {
+    padding-left: 20px;
+    padding-right: 0px;
+}
+
+label{
+   cursor: pointer;
+   
+   padding: 5px;
+}
+
+.delete-btn {
+    background-color: red;
+    background-repeat: no-repeat;
+    border: none;
+    outline: none;
+}
+
+@media (max-width: 500px) {
+    .add-todo-wrapper {
+        position: absolute;
+        bottom: 10px;
+    }
+}

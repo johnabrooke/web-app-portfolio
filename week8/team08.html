@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang='en'>
 <head>
-    <meta charset='utf-8'>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://allfont.net/allfont.css?fonts=star-jedi" rel="stylesheet" type="text/css" />
     <title>Star Wars Ships</title>
     <style>
@@ -15,9 +16,28 @@
             
         }
 
+        button {
+            background-color: cornflowerblue;
+        }
+
+        .view-btn {
+            
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0px;
+        }
+
         .hidden {
             visibility: hidden;
         }
+
+        .visible {
+            visibility: visible;
+        }
+
     </style>
 </head>
 <body>
@@ -25,13 +45,16 @@
     
     <div id="starWars">
         <h2>List of Ships</h2>
+        <button id="getShips" onclick="getShips('https://swapi.dev/api/starships/')">Get Starships</button>
         <ul id="shipsList">
 
         </ul>
-        <button id="getShips" onclick="getShips('https://swapi.dev/api/starships/')">Get Starships</button>
+        <button id="previousPage">Previous page</button>
+        <button id="nextPage">Next page</button>
     </div>
 <script>
-    const btn = document.querySelector('#getShips');
+    const nextBtn = document.querySelector('#nextPage');
+    const previousBtn = document.querySelector('#previousPage');
     async function getShips(url) {
         try{
             const response = await fetch(url);
@@ -52,16 +75,15 @@
         
         
         if(data.next){
-            btn.textContent = "Next page";  
-            btn.setAttribute('onclick', `getShips('${data.next}')`)
+            nextBtn.classList.add("visible");
+            nextBtn.setAttribute('onclick', `getShips('${data.next}')`)
         } else {
-            btn.classList.add("hidden");
+            nextBtn.classList.add("hidden");
         }
 
         if(data.previous) {
-            const previousBtn = document.createElement('button');
-            previousBtn.textContent = "Previous page";
-            previousBtn.setAttribute('ontouchend', `getShips('${data.previous}')`)
+            previousBtn.classList.add("visible")
+            previousBtn.setAttribute('onclick', `getShips('${data.previous}')`)
         } else {
             previousBtn.classList.add("hidden");
         }
@@ -71,7 +93,7 @@
             const listItem = document.createElement('li'); 
             listItem.innerHTML = 
             `
-            <span class="ship-name">Star Ship Name: ${starship.name}</span>
+            <span class="ship-name">${starship.name}</span>
             <button class="view-btn" onclick="getDetails('${starship.name}', '${starship.url}')">View</button>
             `
             listItem.id = starship.name;
@@ -91,9 +113,9 @@
                 div.innerHTML = 
                 `
                 <span class="ship-details">
-                Star Ship Manufacturer: ${json.manufacturer}<br>
-                Star Ship Model: ${json.model}<br>
-                Hyperdrive Ratin: ${json.hyperdrive_rating}<br>
+                Manufacturer: ${json.manufacturer}<br>
+                Model: ${json.model}<br>
+                Hyperdrive Rating: ${json.hyperdrive_rating}<br>
                 Cargo Capacity: ${json.cargo_capacity}<br>
                 Credits Cost: ${json.cost_in_credits}<br>
                 Crew: ${json.crew}<br>

@@ -3,15 +3,40 @@ import ls from './ls.js';
 
 loadToDos();
 document.querySelector('#addBtn').onclick = newToDo;
+document.querySelector('#filterAll').onclick = filterAll;
+document.querySelector('#filterActive').onclick = filterActive;
+document.querySelector('#filterCompleted').onclick = filterCompleted;
+
+function filterAll() {
+    loadToDos();
+}
+
+function filterActive() {
+    const toDoList = ls.getToDoList();
+    const filteredList = toDoList.filter( todo => todo.completed == false )
+    buildList(filteredList);
+}
+
+function filterCompleted() {
+    const toDoList = ls.getToDoList();
+    const filteredList = toDoList.filter( todo => todo.completed == true )
+    buildList(filteredList);
+}
 
 function loadToDos() {
     const toDoList = ls.getToDoList();
 
+    buildList(toDoList); 
+    
+    createTasksLeftElement();
+}
+
+function buildList(toDoList) {
+    document.querySelector('#todos').innerHTML = '';
     toDoList.forEach(todo => {
-        const el = createToDoElement(todo)
+        const el = createToDoElement(todo) 
         addToList(el);
     })
-    
 }
 
 function newToDo() {
@@ -19,6 +44,7 @@ function newToDo() {
     const todoDiv = createToDoElement(todo);
     addToList(todoDiv);
     ls.saveToDo(todo);
+    createTasksLeftElement();
 }
 
 function createToDo() {
@@ -66,6 +92,14 @@ function createToDoElement(todo) {
     return todoDiv;
 }
 
+function createTasksLeftElement() {
+    const toDoList = ls.getToDoList();
+    const numTasksLeft = toDoList.filter(todo => todo.completed == false).length;
+    const tasksLeft = `${numTasksLeft} task${numTasksLeft !== 1 ? 's' : ''} left`;
+    const tasksLeftContent = document.getElementById('tasksLeft');
+    tasksLeftContent.innerText = tasksLeft;
+
+}
 function addToList(todoDiv) {
     // Add to the document
     document.querySelector('#todos').appendChild(todoDiv);
