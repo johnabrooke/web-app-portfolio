@@ -98,7 +98,7 @@
         const nextInventor = b.passed - b.year;
         return lastInventor > nextInventor ? -1 : 1;
       });
-      conosle.log(oldest);
+      console.log(oldest);
 
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -108,9 +108,10 @@
 
       // 7. sort Exercise
       // Sort the people alphabetically by last name
-      const alpha = people.sort(lastOne, nextOne) => {
+      const alpha = people.sort((lastOne, nextOne) => {
         const [aLast, aFirst] = lastOne.split(', ');
         const [bLast, bFirst] = nextOne.split(', ');
+        return aLast > bLast ? 1 : -1;
       });
       console.log(alpha);
 
