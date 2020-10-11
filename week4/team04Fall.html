@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team 4 Activity</title>
+    <link rel="stylesheet" href="team4.css">
+    <style>
+        .flex-container {
+            display:flex;
+            flex-wrap:wrap;
+            justify-content: center;
+            align-items: center;
+            width:300px;
+            height:300px;
+        }
+        .flex-container > div {
+            width: 90px;
+            height: 90px;
+            text-align: center; 
+            align-items: center;
+            font-size: 100px;
+            padding-bottom: 8px;
+        }
+
+        .flex-container > div:nth-child(3n-1) {
+            border-right: 5px solid black;
+        }
+        .flex-container > div:nth-child(3n-2) {
+            border-right: 5px solid black;
+        }
+        .flex-container > div:nth-child(n+0) {
+            border-bottom: 5px solid black;
+        }
+        .flex-container > div:nth-child(n+7) {
+            border-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="flex-container">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <button id="reset">Reset</button>
+    <script>
+        const board = document.getElementById('container');
+        const resetButton = document.getElementById('reset');
+        const player1 = 'X';
+        const player2 = 'O';
+        let player = player1;
+
+        function ticTacToe(e) {
+            console.log(e.target);
+            e.target.innerHTML = player;
+            if (player === player1) player = player2;
+            else player = player1;
+        }
+
+        function resetMe() {
+        for (let i = 0; i < board.children.length; i++) {
+            board.children[i].innerText = '';
+        }
+        const children = Array.from(board.children);
+        const empty = children.filter(function(child) {
+            return child.innerText == 'X' || child.innerText == 'O';
+        });
+        console.log(empty);
+        }
+        board.addEventListener('click', ticTacToe);
+        resetButton.addEventListener('click', resetMe);
+    </script>
+</body>
+</html>
