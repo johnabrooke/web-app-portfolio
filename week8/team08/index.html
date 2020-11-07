@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>WDD 330 Assignment Portal | William (Bill) Burton | BYU-Idaho</title>
+    <meta name="description" content="Assignment portal page for William Burton in CIT 230: Web Frontend Development at BYU-Idaho">
+    <style>
+      body {
+        max-height: 500px;
+        max-width: auto;
+      }
+      ul {
+            list-style-type: none;
+            margin: 10px;
+            padding: 10px;
+            overflow: auto;
+        }
+        button{
+          background-color: darkblue;
+          color: white;
+          width: 100px;
+          height: auto;
+        }
+      
+      .hidden {
+        visibility: hidden; 
+      }
+
+      .visible {
+        visibility: visible;
+      }
+    </style>
+  </head>
+ 
+  <body>
+
+        <h1> Pokemon</h1>
+        <div id="pokemon">
+        <h2>Pokemon List</h2> 
+        <ul id="pokemonList">
+
+        </ul>
+        <button id="prevBtn" class="hidden">Previous</button>
+        <button id="pokemonBtn" class="visible" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon')">List Pokemon</button>
+        <button id="nextBtn" class="hidden">Next</button>
+ </div>
+ <script>
+   const prevBtn = document.querySelector('#prevBtn');
+   const nextBtn = document.querySelector('#nextBtn');
+   //const pokemonBtn = document.querySelector('#pokemonBtn');
+
+     async function getPokemon(url){
+         try {
+             const response = await fetch (url);
+             if (!response.ok){
+                 throw Error(response.statusText)
+             } else{
+               const fetchJson = await response.json();
+            renderPokemon(fetchJson)
+                 console.log(fetchJson)
+             }
+         } catch (error){
+             console.log(error);
+
+         }
+     }
+ function renderPokemon(data) {
+    const pokemonContainer = document.querySelector('#pokemonList');
+    pokemonContainer.textContent = "";
+
+    if (data.next) {
+      nextBtn.classList.add("visible");
+      //pokemonBtn.classList.add("hidden");
+      nextBtn.setAttribute('onclick', `getPokemon('${data.next}')`);
+    } else {
+      nextBtn.classList.add("hidden");
+    }
+    if (data.previous) {
+      prevBtn.classList.add("visible");
+      //pokemonBtn.classList.add("hidden");
+      prevBtn.setAttribute('onclick', `getPokemon('${data.previous}')`);
+    } else {
+      prevBtn.classList.add("hidden");
+    }
+
+     data.results.forEach( pokemon => {
+       const listItem = document.createElement('li');
+        listItem.textContent = pokemon.name;
+        listItem.id = pokemon.name;
+        //console.log(`${listItem.id}`);
+        pokemonContainer.appendChild(listItem);
+
+        listItem.addEventListener('click', function(event) {
+            event.preventDefault();
+            getPokemonDetails(listItem.id, pokemon.url);
+        });
+     })
+ }
+
+ function getPokemonDetails(id, url) {
+     fetch(url)
+        .then(res => res.json())
+        .then(json => {
+            console.log('DETAILS: ', json);
+            const li = document.getElementById(id);
+            console.log(li);
+            const details = document.createElement('div');
+            details.innerHTML =
+                `
+                Base Experience: ${json.base_experience}<br>
+                Height: ${json.height}<br>
+                Weight: ${json.weight}
+                `
+                //li.lastElementChild.remove();
+                li.appendChild(details);
+        })
+ }
+
+ </script>
+
+      
+    
+  </body>
+
+
+</html
