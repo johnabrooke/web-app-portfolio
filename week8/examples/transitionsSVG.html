@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Put Up Your Dukes</title>
     <style>
+        h1 {
+            text-align: center;
+        }
         h1:hover span {
-            color: #484848;
+            color: #1f12d1;
             transform: rotate(10deg) translateX(40px) scale(1.5) skew(15deg, 4deg);
         }
 
@@ -14,12 +17,21 @@
             font-size: 30px;
             color: #999999;
             display: inline-block;
-            transition-property: transform;
-            transition-duration: 0.2s;
+            transition: all 0.2s ease-out -500ms;
+        }
+
+        svg:hover {
+            transform: rotate(180deg) scale(0.5);
+            transition: all 0.2s ease-in-out 80ms;
         }
     </style>
 </head>
 <body>
     <h1>Put your<br/> <span>dukes</span><br/> up, sire</h1>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <circle cx="20" cy="20" r="15" fill="blue"/>
+        <circle cx="50" cy="50" r="25" fill="blue"/>
+        <circle cx="80" cy="20" r="15" fill="blue"/>
+    </svg>
 </body>
 </html>
