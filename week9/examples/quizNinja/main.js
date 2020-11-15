@@ -1,11 +1,11 @@
-// const quiz = [
-//     { name: "Superman", realName: "Clark Kent" },
-//     { name: "Wonder Woman", realName: "Diana Prince"},
-//     { name: "Batman", realName: "Bruce Wayne"},
-//     { name: "The Hulk", realName: "Bruce Banner"},
-//     { name: "Spider-man", realName: "Peter Parker"},
-//     { name: "Cyclops", realName: "Scott Summers"}
-//   ];
+const quiz = [
+    { name: "Superman", realName: "Clark Kent" },
+    { name: "Wonder Woman", realName: "Diana Prince"},
+    { name: "Batman", realName: "Bruce Wayne"},
+    { name: "The Hulk", realName: "Bruce Banner"},
+    { name: "Spider-man", realName: "Peter Parker"},
+    { name: "Cyclops", realName: "Scott Summers"}
+  ];
 
 function random(a, b=1) {
   //if only 1 argument is provided, swap the values of a and b 
@@ -54,7 +54,7 @@ const view = {
     this.render(this.score,game.score);
     this.render(this.result,'');
     this.render(this.info,'');
-    // this.render(this.hiScore, game.hiScore());
+    this.render(this.hiScore, game.hiScore());
     // this.resetForm();
   },
   // resetForm(){
@@ -65,7 +65,7 @@ const view = {
     this.hide(this.question);
     this.hide(this.response);
     this.show(this.start);
-    //this.render(this.hiScore, game.hiScore());
+    this.render(this.hiScore, game.hiScore());
   }
 };
 
@@ -118,23 +118,23 @@ const game = {
         game.gameOver();
       }
     },
-    // hiScore() {
-    //   const hi = localStorage.getItem('highScore') || 0;
-    //   if(this.score > hi || hi === 0) {
-    //     localStorage.setItem('highScore', this.score);
-    //     view.render(view.info, '** NEW HIGH Score! **');
-    //   }
-    //   return localStorage.getItem('highScore');
-    // },
+    hiScore() {
+      const hi = localStorage.getItem('highScore') || 0;
+      if(this.score > hi || hi === 0) {
+        localStorage.setItem('highScore', this.score);
+        view.render(view.info, '** NEW HIGH Score! **');
+      }
+      return localStorage.getItem('highScore');
+    },
     gameOver(){
       console.log('gameOver() invoked');
       view.render(view.info, `Game Over, you scored ${this.score} point${this.score !== 1 ? 's' : ''}`);
       //view.show(view.start);
-      clearInterval(this.timer);
       view.teardown();
+      clearInterval(this.timer);
     }
   }
-// view.start.addEventListener('click', () => game.start(quiz), false);
-// view.response.addEventListener('click', (event) => game.check(event), false);
+view.start.addEventListener('click', () => game.start(quiz), false);
+view.response.addEventListener('click', (event) => game.check(event), false);
 // view.hide(view.response);
   
