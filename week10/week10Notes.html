@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 10 Notes</title>
+    <style>
+        body {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Week 10 Notes</h1>
+    <h2><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation" 
+        target="_blank">Validating Forms</a></h2>
+    <h3><a href="https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation"
+        target="_blank">The Constraint Validation API</a></h3>
+    <p>The Constraint Validation API is supported by most browsers and includes methods
+        and properties available on these form element DOM interfaces:
+    </p>
+    <ul>
+        <li>HTMLFieldSetElement (represents a <code>fieldset</code> element)</li>
+        <li>HTMLButtonElement (represents a <code>button</code> element)</li>
+        <li>HTMLInputElement (represents an <code>input</code> element)</li>
+        <li>HTMLOutputElement (represents an <code>output</code> element)</li>
+        <li>HTMLTextAreaElement (represents a <code>textarea</code> element)</li>
+        <li>HTMLSelectElement (represents a <code>select</code> element)</li>
+    </ul>
+    <p>Properties available on the above form elements through the API</p>
+    <ul>
+        <li><code>validationMessage</code>: Returns a localized message describing the validation 
+            constraints that the control doesn't satisfy (if any). If the control is 
+            not a candidate for constraint validation (willValidate is false) or the 
+            element's value satisfies its constraints (is valid), this will return an 
+            empty string.</li>
+        <li><code>validity</code>: Returns a ValidityState object that contains several properties describing 
+            the validity state of the element. (see <a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState"
+            target="_blank">ValidityState</a>)</li>
+        <li><code>willValidate</code>: Returns true if the element will be validated when the form is submitted; false otherwise.</li>
+    </ul>
+    <p>Methods available on the above form elements.</p>
+    <ul>
+        <li><code>checkValidity()</code>: Returns true if the element's value has no validity problems; false otherwise. If the 
+            element is invalid, this method also fires an invalid event on the element.</li>
+        <li><code>setCustomValidity(message)</code>: Adds a custom error message to the element; if you set a custom error message, 
+            the element is considered to be invalid, and the specified error is displayed. This lets you use JavaScript code to 
+            establish a validation failure other than those offered by the standard HTML5 validation constraints. The message is 
+            shown to the user when reporting the problem.
+        </li>
+    </ul>
+    <h4>Implementing a customized error message</h4>
+    <p>One of the most common uses of the constraint validation API is to customize validation error messages</p>
+    <a href="./examples/customErrorMessage.html" target="_blank">See example here.</a>
+
+    <h2><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+        target="_blank">Using Fetch</a></h2>
+    <p>Fetch provides a better alternative than XMLHttpRequest to asynchronously fetch resources across the network that can be 
+        easily used by other technologies such as Service Workers. Fetch also provides a single logical place to define other 
+        HTTP-related concepts such as CORS and extensions to HTTP.
+    </p>
+    <h3>Fetch Upload File Example</h3>
+    <pre>
+        const formData = new FormData();
+        const fileField = document.querySelector('input[type="file"]');
+
+        formData.append("username", "abc123");
+        formData.append("avatar", fileField.files[0]);
+
+        fetch("https://example.com/profile/avatar", {
+            method: 'PUT',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    </pre>
+</body>
+</html>
