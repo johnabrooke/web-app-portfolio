@@ -55,10 +55,10 @@
              const response = await fetch (url);
              if (!response.ok){
                  throw Error(response.statusText)
-             } else{
+             } else {
                const fetchJson = await response.json();
-            renderPokemon(fetchJson)
-                 console.log(fetchJson)
+               renderPokemon(fetchJson);
+               console.log(fetchJson)
              }
          } catch (error){
              console.log(error);
@@ -70,6 +70,7 @@
     pokemonContainer.textContent = "";
 
     if (data.next) {
+      console.log(nextBtn);
       nextBtn.classList.add("visible");
       //pokemonBtn.classList.add("hidden");
       nextBtn.setAttribute('onclick', `getPokemon('${data.next}')`);

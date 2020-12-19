@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>PokemonMe</title>
+        <meta name="description" content="App to find which Pokemon are closest to you in size.">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        
+    </head>
+    
+    <body>
+        <h1> PokemonMe</h1>
+        <!-- Possible future feature to add
+        <h2>Enter you hight and weight to find the Pokemon closest to your size:</h2>
+        <div>
+            <label for="height" name="height">Hight:</label>
+            <input id="height" type="text"/>
+            <label for="weight" name="weight">Weight:</label>
+            <input id="weight" type="text"/>
+            <button id="pokemonMe">PokemonMe</button>
+        </div> -->
+        <div id="pokemon">
+            <ul id="pokemonList" class="grid-container"></ul>
+            <button id="prevBtn" class="hidden">Previous</button>
+            <!--<button id="pokemonBtn" class="visible" onclick="getPokemon('https://pokeapi.co/api/v2/pokemon?limit=151')">List Pokemon</button>-->
+            <button id="nextBtn" class="hidden">Next</button>
+        </div>    
+        <script type="text/javascript" src="pokemonMe.js"></script>
+    </body>
+</html
