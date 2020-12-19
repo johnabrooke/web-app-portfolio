@@ -12,7 +12,7 @@ async function getPokemon(url){
         } else{
         const fetchJson = await response.json();
         renderPokemon(fetchJson)
-        console.log('Initial Fetch: ', fetchJson)
+        console.log('Fetch: ', fetchJson)
         }
     } catch (error){
         console.log(error);
@@ -23,24 +23,23 @@ async function getPokemon(url){
 function renderPokemon(data) {
 
     const pokemonContainer = document.getElementById('pokemonList');
-    //pokemonContainer.textContent = "";
 
-    if (data.next) {
-        //console.log(pokemonMeBtn);
-        console.log(nextBtn);
-        nextBtn.classList.add("visible");
-        //pokemonBtn.classList.add("hidden");
-        nextBtn.setAttribute('onclick', `getPokemon('${data.next}')`);
-    } else {
-        nextBtn.classList.add("hidden");
-    }
-    if (data.previous) {
-        prevBtn.classList.add("visible");
-        //pokemonBtn.classList.add("hidden");
-        prevBtn.setAttribute('onclick', `getPokemon('${data.previous}')`);
-    } else {
-        prevBtn.classList.add("hidden");
-    }
+    // if (data.next) {
+    //     //console.log(pokemonMeBtn);
+    //     console.log(nextBtn);
+    //     nextBtn.classList.add("visible");
+    //     //pokemonBtn.classList.add("hidden");
+    //     nextBtn.setAttribute('onclick', `getPokemon('${data.next}')`);
+    // } else {
+    //     nextBtn.classList.add("hidden");
+    // }
+    // if (data.previous) {
+    //     prevBtn.classList.add("visible");
+    //     //pokemonBtn.classList.add("hidden");
+    //     prevBtn.setAttribute('onclick', `getPokemon('${data.previous}')`);
+    // } else {
+    //     prevBtn.classList.add("hidden");
+    // }
 
     data.results.forEach( (pokemon, index) => {
         const listItem = document.createElement('div');
